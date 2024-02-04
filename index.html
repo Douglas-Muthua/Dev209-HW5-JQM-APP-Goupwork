@@ -9,30 +9,60 @@
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script src="main.js"></script>
-<link rel="stylesheet" type="text/css" href="site.css">
 <script>
-    $(document).ready(function(){ 
-        $( ".mydforminput :input" ).css("background", "yellow");
+  $(document).ready(function(){
+    $('.tab-link').click(function(){
+      var targetTab = $(this).attr('data-target');
+      $('.tab-content').hide();
+      $(targetTab).show();
     });
-    </script>
+
+    $('#songSubmit').click(function(){
+      var song = $('#songInput').val();
+      $('#songOutput').text(song);
+    });
+
+    $('#artistSubmit').click(function(){
+      var artist = $('#artistInput').val();
+      $('#artistOutput').text(artist);
+    });
+
+    $('#rateSubmit').click(function(){
+      var rating = $('#rateInput').val();
+      $('#rateOutput').text(rating);
+    });
+  });
+</script>
 </head>
 <body>
-    <form action="#" class="mydforminput">
-        <label>Your Favorite Song</label>
-        <input type="text" name="name" placeholder="Enter your favorite song.."><br><br>
-        <label>Artist of the song</label>
-        <input type="singer" name="singer" placeholder="Enter who sing this song..."><br><br>
-        <label>Select your rating</label>
-        <select name="Rate them from 1-5">
-            <option value="">Select option</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select><br><br>
-        <button type="button" name="submit">Submit</button>
-    </form>
+
+<div class="navbar">
+  <a href="#" class="tab-link" data-target="#song">Song</a>
+  <a href="#" class="tab-link" data-target="#artist">Artist</a>
+  <a href="#" class="tab-link" data-target="#rate">Rate</a>
+</div>
+
+<div id="song" class="tab-content">
+  <h2>Favorite Song</h2>
+  <input type="text" id="songInput" placeholder="Enter your favorite song">
+  <button id="songSubmit">Submit</button>
+  <div class="output">Your favorite song: <span id="songOutput"></span></div>
+</div>
+
+<div id="artist" class="tab-content">
+  <h2>Artist</h2>
+  <input type="text" id="artistInput" placeholder="Enter the artist of the song">
+  <button id="artistSubmit">Submit</button>
+  <div class="output">Artist of the song: <span id="artistOutput"></span></div>
+</div>
+
+<div id="rate" class="tab-content">
+  <h2>Rate</h2>
+  <input type="number" id="rateInput" min="1" max="5" placeholder="Rate from 1 to 5">
+  <button id="rateSubmit">Submit</button>
+  <div class="output">Your rating: <span id="rateOutput"></span></div>
+</div>
+
 
 </body>
 </html>
